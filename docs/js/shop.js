@@ -1,4 +1,4 @@
-import { loadProducts, money, renderAuthUI, updateCartCount, addToCart } from "/js/app.js";
+import { loadProducts, money, renderAuthUI, updateCartCount, addToCart } from "/./app.js";
 
 renderAuthUI(); updateCartCount();
 
@@ -100,3 +100,4 @@ document.getElementById("reset").addEventListener("click", ()=>{
 });
 
 apply();
+
