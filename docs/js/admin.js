@@ -1,4 +1,4 @@
-import { renderAuthUI, updateCartCount, money } from "/js/app.js";
+import { renderAuthUI, updateCartCount, money } from "/./app.js";
 
 renderAuthUI(); updateCartCount();
 document.getElementById("y").textContent = new Date().getFullYear();
@@ -56,3 +56,4 @@ document.getElementById("load").addEventListener("click", async ()=>{
     </div>
   `).join("");
 });
+
