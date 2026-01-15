@@ -1,4 +1,4 @@
-import { loadProducts, money, addToCart, renderAuthUI, updateCartCount, qs } from "/js/app.js";
+import { loadProducts, money, addToCart, renderAuthUI, updateCartCount, qs } from "/./app.js";
 
 renderAuthUI(); updateCartCount();
 document.getElementById("y").textContent = new Date().getFullYear();
@@ -64,3 +64,4 @@ if(!p){
     msg.innerHTML = `Added to cart. <a class="btn ghost" href="/cart.html" style="margin-left:8px">Go to Cart</a>`;
   });
 }
+
