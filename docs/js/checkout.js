@@ -1,4 +1,4 @@
-import { getCart, cartTotals, money, placeOrder, setCart, renderAuthUI, updateCartCount, getUser } from "/js/app.js";
+import { getCart, cartTotals, money, placeOrder, setCart, renderAuthUI, updateCartCount, getUser } from "/./app.js";
 
 renderAuthUI(); updateCartCount();
 document.getElementById("y").textContent = new Date().getFullYear();
@@ -75,3 +75,4 @@ document.getElementById("place").addEventListener("click", async ()=>{
     msg.textContent = e.message || "Order failed.";
   }
 });
+
