@@ -1,4 +1,4 @@
-import { getCart, money, removeFromCart, updateQty, cartTotals, renderAuthUI, updateCartCount } from "/js/app.js";
+import { getCart, money, removeFromCart, updateQty, cartTotals, renderAuthUI, updateCartCount } from "/./app.js";
 
 renderAuthUI(); updateCartCount();
 document.getElementById("y").textContent = new Date().getFullYear();
@@ -78,3 +78,4 @@ function render(){
 }
 
 render();
+
