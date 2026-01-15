@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop — Mercier</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="index.html">MERCIER</a>
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="navright">
+      <button class="iconbtn" id="openFilters" type="button">Filters</button>
+      <a class="iconbtn" href="cart.html">Cart <span class="count" data-cart-count>0</span></a>
+      <div data-auth-slot></div>
+    </div>
+  </div>
+</header>
+
+<div class="drawerBackdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawerHead">
+    <div class="title">Filters</div>
+    <button class="iconbtn" id="closeFilters" type="button">Close</button>
+  </div>
+
+  <div class="grid">
+    <div>
+      <div class="muted small">Search</div>
+      <input class="input" id="q" placeholder="Hoodie, tee, jacket..."/>
+    </div>
+
+    <div>
+      <div class="muted small">Category</div>
+      <select id="cat"><option value="">All</option></select>
+    </div>
+
+    <div>
+      <div class="muted small">Sort</div>
+      <select id="sort">
+        <option value="featured">Featured</option>
+        <option value="low">Price: Low → High</option>
+        <option value="high">Price: High → Low</option>
+        <option value="az">Name: A → Z</option>
+      </select>
+    </div>
+
+    <button class="btn" id="reset" type="button">Reset</button>
+    <div class="notice small">Click a product to choose size/color.</div>
+  </div>
+</aside>
+
+<main class="container">
+  <div class="sectionTitle">
+    <h2>Shop</h2>
+    <div class="muted small" id="countText"></div>
+  </div>
+
+  <div class="cards" id="grid"></div>
+</main>
+
+<footer class="footer"><div class="container"><p class="muted small">© <span id="y"></span> Mercier</p></div></footer>
+
+<script type="module">
+  import { renderAuthUI, updateCartCount } from "./js/app.js";
+  renderAuthUI(); updateCartCount();
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
+<script type="module" src="js/shop.js"></script>
+</body>
+</html>

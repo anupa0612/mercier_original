@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Orders — Mercier</title>
+  <link rel="stylesheet" href="/css/styles.css"/>
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="/index.html">MERCIER</a>
+
+    <nav class="navlinks">
+      <a href="/index.html">Home</a>
+      <a href="/shop.html">Shop</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+
+    <div class="navright">
+      <a class="iconbtn" href="/cart.html">Cart <span class="count" data-cart-count>0</span></a>
+      <div data-auth-slot></div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="sectionTitle">
+    <h2>Orders</h2>
+    <span class="muted small">Confirmation</span>
+  </div>
+
+  <div class="totalBox" id="box"></div>
+  <div class="notice small" style="margin-top:14px">
+    Demo: customer sees their last order ID on this device.
+    For real accounts + order history, we can add a database login.
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footerGrid">
+    <div>
+      <h3>MERCIER</h3>
+      <p class="muted small">© <span id="y"></span> Mercier</p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <div class="grid" style="gap:8px">
+        <a href="/shop.html">All Products</a>
+        <a href="/cart.html">Cart</a>
+      </div>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <div class="grid" style="gap:8px">
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <p class="muted small">support@mercier.example</p>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { renderAuthUI, updateCartCount } from "/js/app.js";
+  renderAuthUI(); updateCartCount();
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  const id = localStorage.getItem("mercier_last_order");
+  const box = document.getElementById("box");
+  box.innerHTML = id
+    ? `<div style="font-weight:900;font-size:18px">Thank you!</div>
+       <p class="muted">Your order has been received.</p>
+       <div class="hr"></div>
+       <div class="muted small">Order ID</div>
+       <div style="font-weight:900;font-size:22px">${id}</div>
+       <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+         <a class="btn primary" href="/shop.html">Shop more</a>
+         <a class="btn ghost" href="/contact.html">Contact support</a>
+       </div>`
+    : `<div class="notice">No recent order found. Place an order from checkout.</div>`;
+</script>
+</body>
+</html>

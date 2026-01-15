@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Mercier</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="index.html">MERCIER</a>
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="navright">
+      <a class="iconbtn" href="cart.html">Cart <span class="count" data-cart-count>0</span></a>
+      <div data-auth-slot></div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="sectionTitle"><h2>About</h2><span class="muted small">Our Story</span></div>
+  <div class="totalBox">
+    <p class="muted" style="line-height:1.8">
+      Mercier is built on premium everyday essentials: clean silhouettes, heavyweight comfort,
+      and timeless colors. We focus on pieces that feel good, look sharp, and last longer.
+    </p>
+    <div class="hr"></div>
+    <div class="grid">
+      <div class="notice">Premium Fabrics • Consistent sizing</div>
+      <div class="notice">Modern fit • Minimal design</div>
+      <div class="notice">Fast support • Easy returns</div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container"><p class="muted small">© <span id="y"></span> Mercier</p></div>
+</footer>
+
+<script type="module">
+  import { renderAuthUI, updateCartCount } from "./js/app.js";
+  renderAuthUI(); updateCartCount();
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

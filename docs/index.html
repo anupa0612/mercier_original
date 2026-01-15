@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mercier — Clothing</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="index.html">MERCIER</a>
+
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="navright">
+      <a class="iconbtn" href="cart.html">Cart <span class="count" data-cart-count>0</span></a>
+      <div data-auth-slot></div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="heroInner">
+      <div class="heroCopy">
+        <h1>Clean fits.<br/>Premium comfort.</h1>
+        <p:>
+          Modern essentials with heavyweight comfort, clean silhouettes and timeless colors.
+        </p:>
+        <div class="heroActions">
+          <a class="btn primary" href="shop.html">Shop Collection</a>
+          <a class="btn ghost" href="about.html">Our Story</a>
+        </div>
+      </div>
+
+      <div class="heroMedia"
+        style="background-image:url('https://images.unsplash.com/photo-1520975732137-6f33f1d4be75?auto=format&fit=crop&w=1600&q=70')">
+      </div>
+    </div>
+  </section>
+
+  <div class="sectionTitle">
+    <h2>Featured</h2>
+    <a class="btn ghost" href="shop.html">Shop All</a>
+  </div>
+  <div class="cards" id="featured"></div>
+
+  <div class="sectionTitle">
+    <h2>Categories</h2>
+    <span class="muted small">Explore collections</span>
+  </div>
+
+  <div class="catGrid">
+    <a class="catTile" href="shop.html?cat=Hoodies">
+      <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1520975693411-6b3b2b1f9c2c?auto=format&fit=crop&w=1600&q=70')"></div>
+      <div class="overlay"></div>
+      <div class="label">HOODIES</div>
+    </a>
+
+    <a class="catTile" href="shop.html?cat=Outerwear">
+      <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1520975757980-7dbfd8d1e9bb?auto=format&fit=crop&w=1600&q=70')"></div>
+      <div class="overlay"></div>
+      <div class="label">OUTERWEAR</div>
+    </a>
+  </div>
+
+  <div class="sectionTitle">
+    <h2>Best Sellers</h2>
+    <a class="btn ghost" href="shop.html">Shop All</a>
+  </div>
+  <div class="cards" id="best"></div>
+</main>
+
+<footer class="footer">
+  <div class="container footerGrid">
+    <div>
+      <h3>MERCIER</h3>
+      <p class="muted small">Modern essentials — clean fits & premium comfort.</p>
+      <p class="muted small">© <span id="y"></span> Mercier</p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <div class="grid" style="gap:8px">
+        <a href="shop.html">All Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="checkout.html">Checkout</a>
+      </div>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <div class="grid" style="gap:8px">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="orders.html">Orders</a>
+      </div>
+    </div>
+    <div>
+      <h4>Account</h4>
+      <div class="grid" style="gap:8px">
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { loadProducts, money, renderAuthUI, updateCartCount } from "./js/app.js";
+  renderAuthUI(); updateCartCount();
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  const products = await loadProducts();
+  const featured = products.slice(0,4);
+  const best = products.slice(0,4);
+
+  const card = (p)=>`
+    <a class="card" href="product.html?id=${encodeURIComponent(p.id)}">
+      ${p.badge ? `<span class="badge">${p.badge}</span>` : ``}
+      <div class="cardImg" style="background-image:url('${p.image}')"></div>
+      <div class="cardBody">
+        <div class="cardName">${p.name}</div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div class="muted small">${p.category}</div>
+          <div class="price">${money(p.price)}</div>
+        </div>
+      </div>
+    </a>
+  `;
+
+  document.getElementById("featured").innerHTML = featured.map(card).join("");
+  document.getElementById("best").innerHTML = best.map(card).join("");
+</script>
+</body>
+</html>

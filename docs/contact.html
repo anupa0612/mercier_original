@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Mercier</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="index.html">MERCIER</a>
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="navright">
+      <a class="iconbtn" href="cart.html">Cart <span class="count" data-cart-count>0</span></a>
+      <div data-auth-slot></div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="sectionTitle"><h2>Contact</h2><span class="muted small">We reply within 24 hours</span></div>
+
+  <div class="split">
+    <div class="totalBox">
+      <div style="font-weight:900">Customer Support</div>
+      <p class="muted">Email: support@mercier.example</p>
+      <p class="muted">Hours: Mon–Fri, 9am–6pm</p>
+      <div class="notice small">Replace details with your real email/phone anytime.</div>
+    </div>
+
+    <div class="totalBox">
+      <div class="grid">
+        <div>
+          <div class="muted small">Your email</div>
+          <input class="input" id="email" placeholder="you@email.com"/>
+        </div>
+        <div>
+          <div class="muted small">Message</div>
+          <textarea id="message" placeholder="How can we help?"></textarea>
+        </div>
+        <button class="btn primary" id="send" type="button">Send</button>
+        <div class="notice" id="msg" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer"><div class="container"><p class="muted small">© <span id="y"></span> Mercier</p></div></footer>
+
+<script type="module">
+  import { renderAuthUI, updateCartCount } from "./js/app.js";
+  renderAuthUI(); updateCartCount();
+  document.getElementById("y").textContent = new Date().getFullYear();
+  document.getElementById("send").addEventListener("click", ()=>{
+    const msg = document.getElementById("msg");
+    msg.style.display="block";
+    msg.textContent="Message sent (demo).";
+  });
+</script>
+</body>
+</html>
