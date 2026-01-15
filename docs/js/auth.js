@@ -1,4 +1,4 @@
-import { setUser, renderAuthUI, updateCartCount } from "/js/app.js";
+import { setUser, renderAuthUI, updateCartCount } from "/./app.js";
 
 renderAuthUI(); updateCartCount();
 document.getElementById("y").textContent = new Date().getFullYear();
@@ -34,3 +34,4 @@ if(isRegister){
     location.href = "/shop.html";
   });
 }
+
